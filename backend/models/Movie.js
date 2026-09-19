@@ -9,7 +9,11 @@ const movieSchema = new mongoose.Schema({
   director: { type: String },
   status: { type: String, enum: ['Watched', 'Watchlist', 'Currently Watching'], default: 'Watchlist' },
   language: { type: String },
-  description: { type: String }
+  description: { type: String },
+  posterUrl: { 
+    type: String, 
+    default: 'https://via.placeholder.com/300x450?text=No+Poster+Available' 
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Movie', movieSchema);

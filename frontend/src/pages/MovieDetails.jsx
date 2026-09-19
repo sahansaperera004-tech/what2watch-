@@ -87,15 +87,17 @@ function MovieDetails() {
       </Link>
 
       <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
-        <div className="movie-gradient flex min-h-[460px] items-end rounded-2xl border border-white/10 p-6">
-          <div>
-            <span className="rounded-full bg-purple-600 px-3 py-1 text-sm">
+        {/* Movie Poster Container */}
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-cinema-900 shadow-2xl">
+          <img
+            src={movie.posterUrl || 'https://via.placeholder.com/300x450?text=No+Poster+Available'}
+            alt={movie.title}
+            className="h-full max-h-[480px] w-full object-cover"
+          />
+          <div className="absolute top-4 left-4">
+            <span className="rounded-full bg-purple-600 px-3 py-1 text-xs font-semibold text-white shadow-md">
               {movie.genre}
             </span>
-
-            <h1 className="mt-4 text-3xl font-black">
-              {movie.title}
-            </h1>
           </div>
         </div>
 
@@ -114,9 +116,9 @@ function MovieDetails() {
             </span>
           </div>
 
-          <h2 className="mt-6 text-4xl font-black">
+          <h1 className="mt-6 text-4xl font-black">
             {movie.title}
-          </h2>
+          </h1>
 
           <p className="mt-4 leading-7 text-gray-300">
             {movie.description ||

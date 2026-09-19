@@ -8,9 +8,15 @@ import {
   FaUserShield,
 } from 'react-icons/fa';
 
+import SurpriseMeButton from './SurpriseMeButton';
+import { useGetMoviesQuery } from '../redux/moviesApiSlice';
+
 function Navigation() {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+
+  // Fetch movies to pass to SurpriseMeButton
+  const { data: movies = [] } = useGetMoviesQuery();
 
   const user = JSON.parse(localStorage.getItem('what2watchUser') || 'null');
 
@@ -39,6 +45,7 @@ function Navigation() {
           <span>what2watch</span>
         </Link>
 
+        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex">
           <NavLink to="/" className={navClass}>
             Home
@@ -54,6 +61,9 @@ function Navigation() {
               Admin
             </span>
           </NavLink>
+
+          {/* Surprise Me Button */}
+          <SurpriseMeButton movies={movies} />
 
           {user ? (
             <button
@@ -73,6 +83,7 @@ function Navigation() {
           )}
         </nav>
 
+        {/* Mobile Toggle Button */}
         <button
           className="text-xl md:hidden"
           onClick={() => setOpen(!open)}
@@ -82,6 +93,7 @@ function Navigation() {
         </button>
       </div>
 
+      {/* Mobile Navigation Menu */}
       {open && (
         <nav className="border-t border-white/10 px-4 pb-4 md:hidden">
           <div className="flex flex-col gap-3 pt-4">
@@ -109,6 +121,11 @@ function Navigation() {
               Admin Dashboard
             </NavLink>
 
+            {/* Mobile Surprise Me Button */}
+            <div className="py-1">
+              <SurpriseMeButton movies={movies} />
+            </div>
+
             {user ? (
               <button
                 onClick={logout}
@@ -120,7 +137,7 @@ function Navigation() {
               <Link
                 to="/login"
                 onClick={() => setOpen(false)}
-                className="rounded-lg bg-purple-600 px-4 py-2"
+                className="rounded-lg bg-purple-600 px-4 py-2 text-center"
               >
                 Login / Register
               </Link>
