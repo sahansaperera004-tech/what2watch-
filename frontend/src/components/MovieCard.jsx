@@ -8,6 +8,11 @@ function MovieCard({ movie }) {
       className="group overflow-hidden rounded-2xl border border-white/10 bg-cinema-900 transition hover:-translate-y-1 hover:border-purple-500/50"
     >
       <div className="movie-gradient relative flex aspect-[2/3] items-end overflow-hidden p-4">
+                <img 
+          src={movie.poster || movie.image || 'https://via.placeholder.com/300x450?text=No+Poster'} 
+          alt={movie.title} 
+          className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110" 
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
         <div className="relative z-10 w-full">
