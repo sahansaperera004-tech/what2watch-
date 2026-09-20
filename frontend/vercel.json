@@ -1,0 +1,1 @@
+{ "rewrites": [ { "source": "/api/(.*)", "destination": "https://what2watch-backend-t4b2.onrender.com/api/$1" } ] } 
