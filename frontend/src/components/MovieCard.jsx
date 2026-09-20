@@ -9,7 +9,7 @@ function MovieCard({ movie }) {
     >
       <div className="movie-gradient relative flex aspect-[2/3] items-end overflow-hidden p-4">
                 <img 
-          src={movie.poster || movie.image || 'https://via.placeholder.com/300x450?text=No+Poster'} 
+          src=src={movie.posterUrl || 'https://via.placeholder.com/300x450?text=No+Poster'} 
           alt={movie.title} 
           className="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-110" 
         />
